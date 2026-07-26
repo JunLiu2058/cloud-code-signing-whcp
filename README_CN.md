@@ -1,8 +1,8 @@
 <!--
 =============================================
   新华云签名 — 完整中文 README
-  Username: JunLiu2058
-  PDF：docs/Xinhua-Cloud-Sign-WhitePaper.pdf
+  组织：Xinhua-Cloud-Sign
+  仓库：Xinhua-Cloud-Sign/cloud-code-signing-whcp
 =============================================
 -->
 
@@ -11,13 +11,13 @@
 > 零上传云端代码签名，适用于 Windows 驱动与应用。  
 > 支持 WHCP、安全启动、SmartScreen 及 360 信任链。  
 > **全球独家微软白名单机制。**  
-> FIPS 140-3 认证 · 单次签名 28ms · 覆盖 197 国家 · 仅传哈希零上传
+> FIPS 140-3 认证 · 单次签名 28ms · 覆盖 197 国 · 仅传哈希零上传
 
-[![平台](https://img.shields.io/badge/平台-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)](https://github.com/JunLiu2058/cloud-code-signing-whcp)
-[![安全](https://img.shields.io/badge/安全-FIPS%20140--3-blue)](https://github.com/JunLiu2058/cloud-code-signing-whcp)
-[![WHCP](https://img.shields.io/badge/WHCP-2026%20就绪-green)](https://github.com/JunLiu2058/cloud-code-signing-whcp)
-[![隐私](https://img.shields.io/badge/隐私-零上传-orange)](https://github.com/JunLiu2058/cloud-code-signing-whcp)
-[![GitHub](https://img.shields.io/badge/GitHub-JunLiu2058-black?logo=github)](https://github.com/JunLiu2058)
+[![平台](https://img.shields.io/badge/平台-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)](https://github.com/Xinhua-Cloud-Sign/cloud-code-signing-whcp)
+[![安全](https://img.shields.io/badge/安全-FIPS%20140--3-blue)](https://github.com/Xinhua-Cloud-Sign/cloud-code-signing-whcp)
+[![WHCP](https://img.shields.io/badge/WHCP-2026%20就绪-green)](https://github.com/Xinhua-Cloud-Sign/cloud-code-signing-whcp)
+[![隐私](https://img.shields.io/badge/隐私-零上传-orange)](https://github.com/Xinhua-Cloud-Sign/cloud-code-signing-whcp)
+[![组织](https://img.shields.io/badge/组织-Xinhua--Cloud--Sign-1a1a2e?logo=github)](https://github.com/Xinhua-Cloud-Sign)
 
 ---
 
@@ -67,8 +67,6 @@
 
 ## ⚠️ 微软 WHCP 与 2026 策略变更
 
-微软官方公告：
-
 > *"从 **2026 年 4 月安全更新**起，通过已过期交叉签名程序签名的 kernel 驱动将**默认不再被信任**。"*
 
 **2026 年哪些会失效：**
@@ -88,13 +86,26 @@
 
 ## 📄 产品白皮书（PDF）
 
-完整技术白皮书 —— 架构、仅哈希流程、WHCP 集成、8 类签名矩阵。  
-针对 **Adobe Acrobat 扁平化/线性化** 优化，零渲染卡顿。
-
 | 操作 | 链接 |
 |--------|------|
 | 📖 在线预览 | [Xinhua-Cloud-Sign-WhitePaper.pdf](./docs/Xinhua-Cloud-Sign-WhitePaper.pdf) |
-| 📥 直链下载 | [raw 链接](https://raw.githubusercontent.com/JunLiu2058/cloud-code-signing-whcp/main/docs/Xinhua-Cloud-Sign-WhitePaper.pdf) |
+| 📥 直链下载 | [raw 链接](https://raw.githubusercontent.com/Xinhua-Cloud-Sign/cloud-code-signing-whcp/main/docs/Xinhua-Cloud-Sign-WhitePaper.pdf) |
+
+---
+
+## 🧰 Windows 安装包
+
+| 文件 | 说明 |
+|------|------|
+| `CodeSigning_installer.exe` | 云签名客户端 Windows 安装包 |
+
+```bat
+:: 以管理员身份运行
+CodeSigning_installer.exe
+
+:: 验证安装包签名
+sigcheck -v CodeSigning_installer.exe
+```
 
 ---
 
@@ -103,49 +114,30 @@
 > *这里不属于产品经理，只属于那些愿意读 Intel SDM、凌晨两点还在调 BSOD 的人。*
 
 **我们在找这样的人：**
-- 🛠 写过 `.sys` 的人（哪怕只成功加载过一次）
+- 🛠 写过 `.sys` 的人
 - 🔬 喜欢逆向工程 / 研究 PE 格式的人
-- 🛡 研究过 PatchGuard / HVCI / VBS 的人
+- 🛡 研究过 PatchGuard / HVCI 的人
 - 🚀 搞 CI/CD 签名自动化的同学
-- 😤 被 SmartScreen / 360 / WHCP 拒绝过的人
 
-**我们在聊这些：**
-- Windows 内核原理 & IRQL 地狱
-- PatchGuard 对抗与防御（仅研究用途）
-- 微软签名策略变化追踪
-- 基于哈希的远程签名架构
-- "那个花了三个晚上才找到的 Bug"
+**加入福利：** 免费获赠 1 份正版云签名（类型任选）。
 
-### 🎁 加入福利：免费云签名
-
-所有加入社区的开发者，**免费获赠 1 份正版云签名**（类型任选）：
-
-- ✅ 零上传（仅哈希）
-- ✅ WHCP / 安全启动 / SmartScreen 全支持
-- ✅ 提前适配 2026 年 4 月策略
-- ✅ 无需 USB Key · 私钥不出云
-
-> **不需要填表。不需要转发。不卖课。**  
-> 你搞内核，我们送签名。
+> **不需要填表。不需要转发。不卖课。** 你搞内核，我们送签名。
 
 ---
 
-## 🧰 快速开始
+## 🧰 快速开始（CLI）
 
 ```text
-# 1. 本地计算摘要（绝不上传文件）
+# 1. 本地计算摘要
 sha256sum mydriver.sys > digest.txt
 
-# 2. 将摘要发送至云端 HSM
+# 2. 发送至云端 HSM
 curl -X POST https://api.xinhua-signing.com/v1/sign \
-  -H "Authorization: Bearer $TOKEN" \
-  -d @digest.txt
+  -H "Authorization: Bearer $TOKEN" -d @digest.txt
 
-# 3. 将返回的签名嵌入 PE 文件
-sign-tool embed mydriver.sys --sig response.sig
+# 3. 嵌入签名
+codesigning.exe embed mydriver.sys --sig response.sig
 ```
-
-> 完整 SDK / CLI 即将开源 —— 点个 Star 关注本仓库 ⭐
 
 ---
 
@@ -162,14 +154,13 @@ sign-tool embed mydriver.sys --sig response.sig
 
 ## 📜 许可证
 
-产品/服务：专有 SaaS。  
-本仓库（README + 文档）：**MIT 协议** —— 可自由引用或 Fork 结构。
+产品/服务：专有 SaaS。本仓库：**MIT 协议**。
 
 ---
 
 ## 🔗 相关链接
 
-- [微软 WHCP / 硬件仪表板](https://learn.microsoft.com/zh-cn/windows-hardware/drivers/dashboard/)
+- [微软 WHCP](https://learn.microsoft.com/zh-cn/windows-hardware/drivers/dashboard/)
 - [驱动签名要求](https://learn.microsoft.com/zh-cn/windows-hardware/drivers/dashboard/code-signing-reqs)
 - [Windows 驱动策略](https://support.microsoft.com/zh-cn/windows/windows-驱动程序策略)
 
