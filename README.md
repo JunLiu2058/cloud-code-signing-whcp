@@ -1,15 +1,19 @@
 <!--
 =============================================
-  LANGUAGE / 语言选择
-  🇬🇧 English  → scroll down to [English Version ↓]
-  🇨🇳 中文     → scroll down to [中文版本 ↓]
+  Xinhua Cloud Signing / 新华云签名
+  Main README — Language switcher on top,
+  full English version first, Chinese below.
+  Username: JunLiu2058
+  PDF path: docs/Xinhua-Cloud-Sign-WhitePaper.pdf
 =============================================
 -->
 
 <p align="center">
-  <a href="#-english-version"><img src="https://img.shields.io/badge/🇬🇧-English-dde6ff?style=for-the-badge&labelColor=1a1a2e"></a>
+  <a href="#-english-version"><img src="https://img.shields.io/badge/🇬🇧-English-dde6ff?style=for-the-badge&labelColor=1a1a2e" alt="English"></a>
   &nbsp;&nbsp;
-  <a href="#-中文版本"><img src="https://img.shields.io/badge/🇨🇳-中文-eff6ff?style=for-the-badge&labelColor=7f1d1d"></a>
+  <a href="#-中文版本"><img src="https://img.shields.io/badge/🇨🇳-中文-eff6ff?style=for-the-badge&labelColor=7f1d1d" alt="中文"></a>
+  &nbsp;&nbsp;
+  <a href="./docs/Xinhua-Cloud-Sign-WhitePaper.pdf"><img src="https://img.shields.io/badge/📄-Whitepaper-orange?style=for-the-badge" alt="PDF"></a>
 </p>
 
 ---
@@ -21,14 +25,15 @@
 > **Global exclusive Microsoft whitelist mechanism.**  
 > FIPS 140-3 certified · 28ms per sign · 197 countries · Hash-only (no file upload)
 
-![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)
-![FIPS](https://img.shields.io/badge/security-FIPS%20140--3-blue)
-![WHCP](https://img.shields.io/badge/WHCP-2026%20ready-green)
-![Privacy](https://img.shields.io/badge/privacy-zero--upload-orange)
+[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)](https://github.com/JunLiu2058/cloud-code-signing-whcp)
+[![FIPS](https://img.shields.io/badge/security-FIPS%20140--3-blue)](https://github.com/JunLiu2058/cloud-code-signing-whcp)
+[![WHCP](https://img.shields.io/badge/WHCP-2026%20ready-green)](https://github.com/JunLiu2058/cloud-code-signing-whcp)
+[![Privacy](https://img.shields.io/badge/privacy-zero--upload-orange)](https://github.com/JunLiu2058/cloud-code-signing-whcp)
+[![GitHub](https://img.shields.io/badge/GitHub-JunLiu2058-black?logo=github)](https://github.com/JunLiu2058)
 
 ---
 
-## 🇬🇧 English Version
+## 🇬🇧 English Version {#english-version}
 
 ### 🚀 Why Xinhua Cloud Signing?
 
@@ -51,7 +56,7 @@ We do it differently:
 ### 🏆 Security Credentials
 
 - ✅ **FIPS 140-3** (U.S. highest crypto module standard, NSA-aligned)
-- ✅ **HSM-backed key storage** (FIPS-grade)
+- ✅ **HSM-backed key storage** (FIPS-grade hardware security module)
 - ✅ **SHA-256 / RSA-4096 / ECC P-384**
 - ✅ Integrated CAs: **DigiCert · GlobalSign · Sectigo · SSL.com · Certum**
 
@@ -102,10 +107,8 @@ Optimized for **Adobe Acrobat (flattened / linearized)** — zero rendering lag.
 
 | Action | Link |
 |--------|------|
-| 📖 Preview | [Xinhua-Cloud-Sign-WhitePaper.pdf](./docs/Xinhua-Cloud-Sign-WhitePaper.pdf) |
-| 📥 Direct Download | [raw link](https://raw.githubusercontent.com/用户名/cloud-code-signing-whcp/main/docs/Xinhua-Cloud-Sign-WhitePaper.pdf) |
-
-> ⚠️ Replace `用户名` with your GitHub username after push.
+| 📖 Preview (inline) | [Xinhua-Cloud-Sign-WhitePaper.pdf](./docs/Xinhua-Cloud-Sign-WhitePaper.pdf) |
+| 📥 Direct Download | [raw link](https://raw.githubusercontent.com/JunLiu2058/cloud-code-signing-whcp/main/docs/Xinhua-Cloud-Sign-WhitePaper.pdf) |
 
 ---
 
@@ -137,7 +140,7 @@ Every developer who joins the community gets **1× free production-grade cloud s
 - ✅ No USB token · no private key exposure
 
 > **No forms. No shares. No KPI.**  
-> Just: "you hack kernels, we give you signatures."
+> Just: *"you hack kernels, we give you signatures."*
 
 ---
 
@@ -189,9 +192,7 @@ This repo (README + docs): **MIT** — feel free to reference / fork the structu
 > 🧠 *"Code doesn't have to be perfect. But the signature? That has to be bulletproof."*  
 > — Xinhua Cloud Signing Team
 
----
-
-<br><br><br>
+<br><br>
 
 ---
 
@@ -203,21 +204,20 @@ This repo (README + docs): **MIT** — feel free to reference / fork the structu
 
 ---
 
-# 🌩 新华云签名
+# 🌩 新华云签名 {#中文版本}
 
 > 零上传云端代码签名，适用于 Windows 驱动与应用。  
 > 支持 WHCP、安全启动、SmartScreen 及 360 信任链。  
 > **全球独家微软白名单机制。**  
 > FIPS 140-3 认证 · 单次签名 28ms · 覆盖 197 国 · 仅传哈希零上传
 
-![平台](https://img.shields.io/badge/平台-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)
-![安全](https://img.shields.io/badge/安全-FIPS%20140--3-blue)
-![WHCP](https://img.shields.io/badge/WHCP-2026%20就绪-green)
-![隐私](https://img.shields.io/badge/隐私-零上传-orange)
+[![平台](https://img.shields.io/badge/平台-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)](https://github.com/JunLiu2058/cloud-code-signing-whcp)
+[![安全](https://img.shields.io/badge/安全-FIPS%20140--3-blue)](https://github.com/JunLiu2058/cloud-code-signing-whcp)
+[![WHCP](https://img.shields.io/badge/WHCP-2026%20就绪-green)](https://github.com/JunLiu2058/cloud-code-signing-whcp)
+[![隐私](https://img.shields.io/badge/隐私-零上传-orange)](https://github.com/JunLiu2058/cloud-code-signing-whcp)
+[![GitHub](https://img.shields.io/badge/GitHub-JunLiu2058-black?logo=github)](https://github.com/JunLiu2058)
 
 ---
-
-## 🇨🇳 中文版本
 
 ### 🚀 为什么选新华云签名？
 
@@ -277,10 +277,10 @@ This repo (README + docs): **MIT** — feel free to reference / fork the structu
 ✅ **新华云签名已接入微软白名单** —— 全球独家。
 
 #### 📌 官方链接
-- Windows 驱动策略：https://support.microsoft.com/en-us/topic/the-windows-driver-policy-ecd2a78c-750c-415d-93f2-e37302ce0443
+- Windows 驱动策略：https://support.microsoft.com/zh-cn/windows/windows-驱动程序策略
+- 驱动代码签名要求：https://learn.microsoft.com/zh-cn/windows-hardware/drivers/dashboard/code-signing-reqs
+- 硬件仪表板入门：https://learn.microsoft.com/zh-cn/windows-hardware/drivers/dashboard/
 - 推进 Windows 驱动安全：https://techcommunity.microsoft.com/blog/windows-itpro-blog/advancing-windows-driver-security-removing-trust-for-the-cross-signed-driver-pro/4504818
-- 驱动代码签名要求：https://learn.microsoft.com/en-us/windows-hardware/drivers/dashboard/code-signing-reqs
-- 硬件仪表板入门：https://learn.microsoft.com/en-us/windows-hardware/drivers/dashboard/
 
 ---
 
@@ -292,9 +292,7 @@ This repo (README + docs): **MIT** — feel free to reference / fork the structu
 | 操作 | 链接 |
 |--------|------|
 | 📖 在线预览 | [Xinhua-Cloud-Sign-WhitePaper.pdf](./docs/Xinhua-Cloud-Sign-WhitePaper.pdf) |
-| 📥 直链下载 | [raw 链接](https://raw.githubusercontent.com/用户名/cloud-code-signing-whcp/main/docs/Xinhua-Cloud-Sign-WhitePaper.pdf) |
-
-> ⚠️ 推送后请将 `用户名` 替换为你的 GitHub 用户名。
+| 📥 直链下载 | [raw 链接](https://raw.githubusercontent.com/JunLiu2058/cloud-code-signing-whcp/main/docs/Xinhua-Cloud-Sign-WhitePaper.pdf) |
 
 ---
 
@@ -378,7 +376,7 @@ sign-tool embed mydriver.sys --sig response.sig
 > 🧠 *"代码可以不完美，但签名一定要无懈可击。"*  
 > —— 新华云签名团队
 
-<br><br><br>
+<br><br>
 
 ---
 
