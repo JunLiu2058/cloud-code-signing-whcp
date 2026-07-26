@@ -1,9 +1,8 @@
 <!--
 =============================================
-  Xinhua Cloud Signing — English README
-  Standalone English version.
-  Symlink / copy this as README.md on an English-only branch,
-  or use it as the canonical EN source.
+  Xinhua Cloud Signing — Full English README
+  Username: JunLiu2058
+  PDF: docs/Xinhua-Cloud-Sign-WhitePaper.pdf
 =============================================
 -->
 
@@ -14,10 +13,11 @@
 > **Global exclusive Microsoft whitelist mechanism.**  
 > FIPS 140-3 certified · 28ms per sign · 197 countries · Hash-only (no file upload)
 
-[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)](https://github.com/)
-[![FIPS](https://img.shields.io/badge/security-FIPS%20140--3-blue)](https://github.com/)
-[![WHCP](https://img.shields.io/badge/WHCP-2026%20ready-green)](https://github.com/)
-[![Privacy](https://img.shields.io/badge/privacy-zero--upload-orange)](https://github.com/)
+[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)](https://github.com/JunLiu2058/cloud-code-signing-whcp)
+[![FIPS](https://img.shields.io/badge/security-FIPS%20140--3-blue)](https://github.com/JunLiu2058/cloud-code-signing-whcp)
+[![WHCP](https://img.shields.io/badge/WHCP-2026%20ready-green)](https://github.com/JunLiu2058/cloud-code-signing-whcp)
+[![Privacy](https://img.shields.io/badge/privacy-zero--upload-orange)](https://github.com/JunLiu2058/cloud-code-signing-whcp)
+[![GitHub](https://img.shields.io/badge/GitHub-JunLiu2058-black?logo=github)](https://github.com/JunLiu2058)
 
 ---
 
@@ -42,7 +42,7 @@ We do it differently:
 ## 🏆 Security Credentials
 
 - ✅ **FIPS 140-3** (U.S. highest crypto module standard, NSA-aligned)
-- ✅ **HSM-backed key storage** (FIPS-grade)
+- ✅ **HSM-backed key storage** (FIPS-grade hardware security module)
 - ✅ **SHA-256 / RSA-4096 / ECC P-384**
 - ✅ Integrated CAs: **DigiCert · GlobalSign · Sectigo · SSL.com · Certum**
 
@@ -67,6 +67,8 @@ We do it differently:
 
 ## ⚠️ Microsoft WHCP & 2026 Policy Change
 
+Microsoft officially announced:
+
 > *"With the **April 2026 security update**, kernel drivers signed via the expired cross-signing program are **no longer trusted by default**."*
 
 **What breaks in 2026:**
@@ -79,8 +81,8 @@ We do it differently:
 ### 📌 Official Links
 - Windows Driver Policy: https://support.microsoft.com/en-us/topic/the-windows-driver-policy-ecd2a78c-750c-415d-93f2-e37302ce0443
 - Advancing Windows Driver Security: https://techcommunity.microsoft.com/blog/windows-itpro-blog/advancing-windows-driver-security-removing-trust-for-the-cross-signed-driver-pro/4504818
-- Code Signing Requirements: https://learn.microsoft.com/en-us/windows-hardware/drivers/dashboard/code-signing-reqs
-- Hardware Dashboard: https://learn.microsoft.com/en-us/windows-hardware/drivers/dashboard/
+- Driver Code Signing Requirements: https://learn.microsoft.com/en-us/windows-hardware/drivers/dashboard/code-signing-reqs
+- Hardware Dashboard Getting Started: https://learn.microsoft.com/en-us/windows-hardware/drivers/dashboard/
 
 ---
 
@@ -91,10 +93,8 @@ Optimized for **Adobe Acrobat (flattened / linearized)** — zero rendering lag.
 
 | Action | Link |
 |--------|------|
-| 📖 Preview | [Xinhua-Cloud-Sign-WhitePaper.pdf](./docs/Xinhua-Cloud-Sign-WhitePaper.pdf) |
-| 📥 Direct Download | [raw link](https://raw.githubusercontent.com/用户名/cloud-code-signing-whcp/main/docs/Xinhua-Cloud-Sign-WhitePaper.pdf) |
-
-> ⚠️ Replace `用户名` with your GitHub username after push.
+| 📖 Preview (inline) | [Xinhua-Cloud-Sign-WhitePaper.pdf](./docs/Xinhua-Cloud-Sign-WhitePaper.pdf) |
+| 📥 Direct Download | [raw link](https://raw.githubusercontent.com/JunLiu2058/cloud-code-signing-whcp/main/docs/Xinhua-Cloud-Sign-WhitePaper.pdf) |
 
 ---
 
@@ -114,17 +114,19 @@ Optimized for **Adobe Acrobat (flattened / linearized)** — zero rendering lag.
 - PatchGuard bypass & defense (research-only)
 - Microsoft signing policy change tracking
 - Hash-based remote signing architecture
+- "That one bug that took 3 nights to find"
 
 ### 🎁 Join Bonus — Free Cloud Signature
 
-Every developer who joins gets **1× free production-grade cloud signature** (any type):
+Every developer who joins the community gets **1× free production-grade cloud signature** (any type from the table):
 
 - ✅ Zero-upload (hash only)
 - ✅ WHCP / Secure Boot / SmartScreen ready
 - ✅ Pre-adapted for April 2026 policy
 - ✅ No USB token · no private key exposure
 
-> **No forms. No shares. No KPI.** Just: "you hack kernels, we give you signatures."
+> **No forms. No shares. No KPI.**  
+> Just: *"you hack kernels, we give you signatures."*
 
 ---
 
@@ -161,7 +163,7 @@ sign-tool embed mydriver.sys --sig response.sig
 ## 📜 License
 
 Product / service: proprietary SaaS.  
-This repo (README + docs): **MIT**.
+This repo (README + docs): **MIT** — feel free to reference / fork the structure.
 
 ---
 
