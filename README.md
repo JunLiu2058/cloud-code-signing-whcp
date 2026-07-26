@@ -27,7 +27,7 @@
 
 > Zero-upload cloud code signing for Windows drivers & apps. Supports WHCP, Secure Boot, SmartScreen & 360. **Global exclusive Microsoft whitelist mechanism.** FIPS 140-3 · 28ms · 197 countries · Hash-only.
 >
-> 零上传云端代码签名，支持 WHCP、安全启动、SmartScreen 及 360。**全球独家微软白名单机制。** FIPS 140-3 · 28ms · 197 国 · 仅传哈希。
+> 零上传云端代码签名，支持 WHCP、安全启动、SmartScreen 及 360。**全球独家微软白名单机制。** FIPS 140-3 · 28ms · 摘要算法 · 仅传哈希。
 
 [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)](https://github.com/JunLiu2058/cloud-code-signing-whcp)
 [![FIPS](https://img.shields.io/badge/security-FIPS%20140--3-blue)](https://github.com/JunLiu2058/cloud-code-signing-whcp)
