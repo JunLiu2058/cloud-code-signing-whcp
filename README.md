@@ -5,6 +5,7 @@
   Organization: Xinhua-Cloud-Sign
 =============================================
 -->
+[![Telegram](https://img.shields.io/badge/Telegram-Community-26A5E4?style=for-the-badge&logo=telegram&logoColor=white&link=[](@replace=10001))](https://t.me/XinhuaCloudSign)
 
 <p align="center">
   <img src="https://img.shields.io/badge/🌩-Xinhua%20Cloud%20Signing-1a1a2e?style=for-the-badge&labelColor=0a1628">
