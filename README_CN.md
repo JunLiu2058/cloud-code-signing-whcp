@@ -11,7 +11,7 @@
 > 零上传云端代码签名，适用于 Windows 驱动与应用。  
 > 支持 WHCP、安全启动、SmartScreen 及 360 信任链。  
 > **全球独家微软白名单机制。**  
-> FIPS 140-3 认证 · 单次签名 28ms · 覆盖 197 国 · 仅传哈希零上传
+> FIPS 140-3 认证 · 单次签名 28ms · 覆盖 197 国家 · 仅传哈希零上传
 
 [![平台](https://img.shields.io/badge/平台-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)](https://github.com/JunLiu2058/cloud-code-signing-whcp)
 [![安全](https://img.shields.io/badge/安全-FIPS%20140--3-blue)](https://github.com/JunLiu2058/cloud-code-signing-whcp)
