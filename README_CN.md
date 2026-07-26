@@ -1,7 +1,8 @@
 <!--
 =============================================
-  新华云签名 — 中文 README
-  独立中文版本。
+  新华云签名 — 完整中文 README
+  Username: JunLiu2058
+  PDF：docs/Xinhua-Cloud-Sign-WhitePaper.pdf
 =============================================
 -->
 
@@ -12,10 +13,11 @@
 > **全球独家微软白名单机制。**  
 > FIPS 140-3 认证 · 单次签名 28ms · 覆盖 197 国 · 仅传哈希零上传
 
-[![平台](https://img.shields.io/badge/平台-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)](https://github.com/)
-[![安全](https://img.shields.io/badge/安全-FIPS%20140--3-blue)](https://github.com/)
-[![WHCP](https://img.shields.io/badge/WHCP-2026%20就绪-green)](https://github.com/)
-[![隐私](https://img.shields.io/badge/隐私-零上传-orange)](https://github.com/)
+[![平台](https://img.shields.io/badge/平台-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)](https://github.com/JunLiu2058/cloud-code-signing-whcp)
+[![安全](https://img.shields.io/badge/安全-FIPS%20140--3-blue)](https://github.com/JunLiu2058/cloud-code-signing-whcp)
+[![WHCP](https://img.shields.io/badge/WHCP-2026%20就绪-green)](https://github.com/JunLiu2058/cloud-code-signing-whcp)
+[![隐私](https://img.shields.io/badge/隐私-零上传-orange)](https://github.com/JunLiu2058/cloud-code-signing-whcp)
+[![GitHub](https://img.shields.io/badge/GitHub-JunLiu2058-black?logo=github)](https://github.com/JunLiu2058)
 
 ---
 
@@ -65,6 +67,8 @@
 
 ## ⚠️ 微软 WHCP 与 2026 策略变更
 
+微软官方公告：
+
 > *"从 **2026 年 4 月安全更新**起，通过已过期交叉签名程序签名的 kernel 驱动将**默认不再被信任**。"*
 
 **2026 年哪些会失效：**
@@ -78,6 +82,7 @@
 - Windows 驱动策略：https://support.microsoft.com/zh-cn/windows/windows-驱动程序策略
 - 驱动代码签名要求：https://learn.microsoft.com/zh-cn/windows-hardware/drivers/dashboard/code-signing-reqs
 - 硬件仪表板入门：https://learn.microsoft.com/zh-cn/windows-hardware/drivers/dashboard/
+- 推进 Windows 驱动安全：https://techcommunity.microsoft.com/blog/windows-itpro-blog/advancing-windows-driver-security-removing-trust-for-the-cross-signed-driver-pro/4504818
 
 ---
 
@@ -89,13 +94,11 @@
 | 操作 | 链接 |
 |--------|------|
 | 📖 在线预览 | [Xinhua-Cloud-Sign-WhitePaper.pdf](./docs/Xinhua-Cloud-Sign-WhitePaper.pdf) |
-| 📥 直链下载 | [raw 链接](https://raw.githubusercontent.com/用户名/cloud-code-signing-whcp/main/docs/Xinhua-Cloud-Sign-WhitePaper.pdf) |
-
-> ⚠️ 推送后请将 `用户名` 替换为你的 GitHub 用户名。
+| 📥 直链下载 | [raw 链接](https://raw.githubusercontent.com/JunLiu2058/cloud-code-signing-whcp/main/docs/Xinhua-Cloud-Sign-WhitePaper.pdf) |
 
 ---
 
-## 👥 小圈子 ——「内核夜校」
+## 👥 开发者社区 ——「内核夜校」
 
 > *这里不属于产品经理，只属于那些愿意读 Intel SDM、凌晨两点还在调 BSOD 的人。*
 
@@ -111,6 +114,7 @@
 - PatchGuard 对抗与防御（仅研究用途）
 - 微软签名策略变化追踪
 - 基于哈希的远程签名架构
+- "那个花了三个晚上才找到的 Bug"
 
 ### 🎁 加入福利：免费云签名
 
@@ -159,7 +163,7 @@ sign-tool embed mydriver.sys --sig response.sig
 ## 📜 许可证
 
 产品/服务：专有 SaaS。  
-本仓库（README + 文档）：**MIT 协议**。
+本仓库（README + 文档）：**MIT 协议** —— 可自由引用或 Fork 结构。
 
 ---
 
