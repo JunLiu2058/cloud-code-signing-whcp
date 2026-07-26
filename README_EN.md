@@ -1,8 +1,8 @@
 <!--
 =============================================
   Xinhua Cloud Signing — Full English README
-  Username: JunLiu2058
-  PDF: docs/Xinhua-Cloud-Sign-WhitePaper.pdf
+  Organization: Xinhua-Cloud-Sign
+  Repo: Xinhua-Cloud-Sign/cloud-code-signing-whcp
 =============================================
 -->
 
@@ -11,13 +11,13 @@
 > Zero-upload cloud code signing for Windows drivers & apps.  
 > Supports WHCP, Secure Boot, SmartScreen & 360.  
 > **Global exclusive Microsoft whitelist mechanism.**  
-> FIPS 140-3 certified · 28ms per sign · Covering 197 countries · Hash-only (no file upload)
+> FIPS 140-3 certified · 28ms per sign · 197 countries · Hash-only (no file upload)
 
-[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)](https://github.com/JunLiu2058/cloud-code-signing-whcp)
-[![FIPS](https://img.shields.io/badge/security-FIPS%20140--3-blue)](https://github.com/JunLiu2058/cloud-code-signing-whcp)
-[![WHCP](https://img.shields.io/badge/WHCP-2026%20ready-green)](https://github.com/JunLiu2058/cloud-code-signing-whcp)
-[![Privacy](https://img.shields.io/badge/privacy-zero--upload-orange)](https://github.com/JunLiu2058/cloud-code-signing-whcp)
-[![GitHub](https://img.shields.io/badge/GitHub-JunLiu2058-black?logo=github)](https://github.com/JunLiu2058)
+[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)](https://github.com/Xinhua-Cloud-Sign/cloud-code-signing-whcp)
+[![FIPS](https://img.shields.io/badge/security-FIPS%20140--3-blue)](https://github.com/Xinhua-Cloud-Sign/cloud-code-signing-whcp)
+[![WHCP](https://img.shields.io/badge/WHCP-2026%20ready-green)](https://github.com/Xinhua-Cloud-Sign/cloud-code-signing-whcp)
+[![Privacy](https://img.shields.io/badge/privacy-zero--upload-orange)](https://github.com/Xinhua-Cloud-Sign/cloud-code-signing-whcp)
+[![Org](https://img.shields.io/badge/Org-Xinhua--Cloud--Sign-1a1a2e?logo=github)](https://github.com/Xinhua-Cloud-Sign)
 
 ---
 
@@ -67,8 +67,6 @@ We do it differently:
 
 ## ⚠️ Microsoft WHCP & 2026 Policy Change
 
-Microsoft officially announced:
-
 > *"With the **April 2026 security update**, kernel drivers signed via the expired cross-signing program are **no longer trusted by default**."*
 
 **What breaks in 2026:**
@@ -82,19 +80,32 @@ Microsoft officially announced:
 - Windows Driver Policy: https://support.microsoft.com/en-us/topic/the-windows-driver-policy-ecd2a78c-750c-415d-93f2-e37302ce0443
 - Advancing Windows Driver Security: https://techcommunity.microsoft.com/blog/windows-itpro-blog/advancing-windows-driver-security-removing-trust-for-the-cross-signed-driver-pro/4504818
 - Driver Code Signing Requirements: https://learn.microsoft.com/en-us/windows-hardware/drivers/dashboard/code-signing-reqs
-- Hardware Dashboard Getting Started: https://learn.microsoft.com/en-us/windows-hardware/drivers/dashboard/
+- Hardware Dashboard: https://learn.microsoft.com/en-us/windows-hardware/drivers/dashboard/
 
 ---
 
 ## 📄 Product Whitepaper (PDF)
 
-Full technical deep-dive — architecture, hash-only flow, WHCP integration, 8-type matrix.  
-Optimized for **Adobe Acrobat (flattened / linearized)** — zero rendering lag.
-
 | Action | Link |
 |--------|------|
-| 📖 Preview (inline) | [Xinhua-Cloud-Sign-WhitePaper.pdf](./docs/Xinhua-Cloud-Sign-WhitePaper.pdf) |
-| 📥 Direct Download | [raw link](https://raw.githubusercontent.com/JunLiu2058/cloud-code-signing-whcp/main/docs/Xinhua-Cloud-Sign-WhitePaper.pdf) |
+| 📖 Preview | [Xinhua-Cloud-Sign-WhitePaper.pdf](./docs/Xinhua-Cloud-Sign-WhitePaper.pdf) |
+| 📥 Download | [raw link](https://raw.githubusercontent.com/Xinhua-Cloud-Sign/cloud-code-signing-whcp/main/docs/Xinhua-Cloud-Sign-WhitePaper.pdf) |
+
+---
+
+## 🧰 Windows Installer
+
+| Asset | Description |
+|-------|-------------|
+| `CodeSigning_installer.exe` | Windows installer for cloud signing client |
+
+```bat
+:: Run as Administrator
+CodeSigning_installer.exe
+
+:: Verify signature
+sigcheck -v CodeSigning_installer.exe
+```
 
 ---
 
@@ -103,75 +114,55 @@ Optimized for **Adobe Acrobat (flattened / linearized)** — zero rendering lag.
 > *Not for product managers. For people who actually read Intel SDM & debug BSOD at 2 AM.*
 
 **We're looking for:**
-- 🛠 WDM / WDF driver authors (`.sys` loaded ≥ once)
-- 🔬 Reverse engineers / PE format nerds
-- 🛡 PatchGuard / HVCI / VBS researchers
+- 🛠 WDM / WDF driver authors
+- 🔬 Reverse engineers
+- 🛡 PatchGuard / HVCI researchers
 - 🚀 CI/CD signing automation folks
-- 😤 Anyone rejected by SmartScreen / 360 / WHCP
 
-**What we talk about:**
-- Windows kernel internals & IRQL hell
-- PatchGuard bypass & defense (research-only)
-- Microsoft signing policy change tracking
-- Hash-based remote signing architecture
-- "That one bug that took 3 nights to find"
+**Join bonus:** 1× free production-grade cloud signature (any type).
 
-### 🎁 Join Bonus — Free Cloud Signature
-
-Every developer who joins the community gets **1× free production-grade cloud signature** (any type from the table):
-
-- ✅ Zero-upload (hash only)
-- ✅ WHCP / Secure Boot / SmartScreen ready
-- ✅ Pre-adapted for April 2026 policy
-- ✅ No USB token · no private key exposure
-
-> **No forms. No shares. No KPI.**  
-> Just: *"you hack kernels, we give you signatures."*
+> **No forms. No shares. No KPI.** Just: *"you hack kernels, we give you signatures."*
 
 ---
 
-## 🧰 Quick Start
+## 🧰 Quick Start (CLI)
 
 ```text
-# 1. Compute local digest (NEVER upload the file)
+# 1. Compute digest
 sha256sum mydriver.sys > digest.txt
 
-# 2. Send digest to cloud HSM
+# 2. Send to cloud HSM
 curl -X POST https://api.xinhua-signing.com/v1/sign \
-  -H "Authorization: Bearer $TOKEN" \
-  -d @digest.txt
+  -H "Authorization: Bearer $TOKEN" -d @digest.txt
 
-# 3. Embed returned signature into PE
-sign-tool embed mydriver.sys --sig response.sig
+# 3. Embed signature
+codesigning.exe embed mydriver.sys --sig response.sig
 ```
-
-> Full SDK / CLI will be open-sourced soon — watch this repo ⭐
 
 ---
 
-## 📊 Stats Snapshot
+## 📊 Stats
 
 | Metric | Value |
 |--------|-------|
 | 🌍 Countries | **197** |
-| ⚡ Median sign time | **28 ms** |
-| 📦 Max single-file | **Hundreds of GB** (hash only) |
-| 🔒 Files uploaded | **0** |
+| ⚡ Sign time | **28 ms** |
+| 📦 Max file | **Hundreds of GB** |
+| 🔒 Uploaded | **0** |
 
 ---
 
 ## 📜 License
 
-Product / service: proprietary SaaS.  
-This repo (README + docs): **MIT** — feel free to reference / fork the structure.
+Product: proprietary SaaS. This repo: **MIT**.
 
 ---
 
 ## 🔗 Related
 
-- [Microsoft WHCP / Hardware Dashboard](https://learn.microsoft.com/en-us/windows-hardware/drivers/dashboard/)
+- [Microsoft WHCP](https://learn.microsoft.com/en-us/windows-hardware/drivers/dashboard/)
 - [Driver Signing Requirements](https://learn.microsoft.com/en-us/windows-hardware/drivers/dashboard/code-signing-reqs)
-- [Windows Driver Policy (2026)](https://support.microsoft.com/en-us/topic/the-windows-driver-policy-ecd2a78c-750c-415d-93f2-e37302ce0443)
+- [Windows Driver Policy](https://support.microsoft.com/en-us/topic/the-windows-driver-policy-ecd2a78c-750c-415d-93f2-e37302ce0443)
 
 ---
 
