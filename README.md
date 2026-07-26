@@ -1,2 +1,1 @@
-# cloud-code-signing-whcp
-Zero-upload cloud code signing for Windows drivers &amp; apps. Supports WHCP, Secure Boot, SmartScreen &amp; 360. Global exclusive Microsoft whitelist. FIPS 140-3 certified. No USB tokens.
+<!-- Keywords: WHCP signing, Windows driver signature, Microsoft hardware dashboard alternative, zero upload code signing, FIPS 140-3 cloud HSM, kernel mode driver signing, EV code signing cloud, 2026 Microsoft policy -->
