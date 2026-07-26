@@ -74,7 +74,7 @@ cloud-code-signing-whcp/
 >
 > 🇨🇳 *这里不属于产品经理，只属于那些愿意读 Intel SDM、凌晨两点还在调 BSOD 的人。* → 加入 → **免费获赠 1 份正版云签名**。不卖课，不割韭菜，只收同类。
 
----
+| 💬 Telegram Group | [t.me/XinhuaCloudSign](https://t.me/XinhuaCloudSign) |
 
 <p align="center">
   <a href="README_EN.md"><b>🇬🇧 Read in English →</b></a>
