@@ -86,6 +86,9 @@
 
 ## 📄 产品白皮书（PDF）
 
+完整技术白皮书 —— 架构、仅哈希流程、WHCP 集成、8 类签名矩阵。  
+针对 **Adobe Acrobat 扁平化/线性化** 优化，零渲染卡顿。
+
 | 操作 | 链接 |
 |--------|------|
 | 📖 在线预览 | [Xinhua-Cloud-Sign-WhitePaper.pdf](./docs/Xinhua-Cloud-Sign-WhitePaper.pdf) |
@@ -97,15 +100,18 @@
 
 | 文件 | 说明 |
 |------|------|
-| `CodeSigning_installer.exe` | 云签名客户端 Windows 安装包 |
+| `Xinhua_EVCS.exe` | 离线完整安装包 v3.0.6.1（Windows x64） |
 
+#### 安装步骤
 ```bat
 :: 以管理员身份运行
-CodeSigning_installer.exe
+Xinhua_EVCS.exe
 
 :: 验证安装包签名
-sigcheck -v CodeSigning_installer.exe
+sigcheck -v Xinhua_EVCS.exe
 ```
+
+> 💡 安装后命令行工具 `codesigning.exe` 自动加入 PATH，可直接在 CMD/PowerShell 调用。
 
 ---
 
@@ -114,30 +120,54 @@ sigcheck -v CodeSigning_installer.exe
 > *这里不属于产品经理，只属于那些愿意读 Intel SDM、凌晨两点还在调 BSOD 的人。*
 
 **我们在找这样的人：**
-- 🛠 写过 `.sys` 的人
+- 🛠 写过 `.sys` 的人（哪怕只成功加载过一次）
 - 🔬 喜欢逆向工程 / 研究 PE 格式的人
 - 🛡 研究过 PatchGuard / HVCI 的人
 - 🚀 搞 CI/CD 签名自动化的同学
+- 😤 被 SmartScreen / 360 / WHCP 拒绝过的人
 
-**加入福利：** 免费获赠 1 份正版云签名（类型任选）。
+**我们在聊这些：**
+- Windows 内核原理 & IRQL 地狱
+- PatchGuard 对抗与防御（仅研究用途）
+- 微软签名策略变化追踪
+- 基于哈希的远程签名架构
+- "那个花了三个晚上才找到的 Bug"
 
-> **不需要填表。不需要转发。不卖课。** 你搞内核，我们送签名。
+#### 🎁 加入福利：免费云签名
+
+所有加入社区的开发者，**免费获赠 1 份正版云签名**（类型任选）：
+
+- ✅ 零上传（仅哈希）
+- ✅ WHCP / 安全启动 / SmartScreen 全支持
+- ✅ 提前适配 2026 年 4 月策略
+- ✅ 无需 USB Key · 私钥不出云
+
+> **不需要填表。不需要转发。不卖课。**  
+> 你搞内核，我们送签名。
+
+#### 💬 Telegram
+| 频道 | 群组 |
+|------|------|
+| 📢 @XinhuaCloudSign_News（官方公告） | 💬 @XinhuaCloudSign（技术交流） |
 
 ---
 
 ## 🧰 快速开始（CLI）
 
 ```text
-# 1. 本地计算摘要
+# 1. 本地计算摘要（绝不上传文件）
 sha256sum mydriver.sys > digest.txt
 
-# 2. 发送至云端 HSM
+# 2. 将摘要发送至云端 HSM
 curl -X POST https://api.xinhua-signing.com/v1/sign \
-  -H "Authorization: Bearer $TOKEN" -d @digest.txt
+  -H "Authorization: Bearer $TOKEN" \
+  -d @digest.txt
 
-# 3. 嵌入签名
+# 3. 将返回的签名嵌入 PE 文件
 codesigning.exe embed mydriver.sys --sig response.sig
 ```
+
+> 完整 SDK / CLI 即将开源 —— 点个 Star 关注本仓库 ⭐
 
 ---
 
@@ -154,13 +184,14 @@ codesigning.exe embed mydriver.sys --sig response.sig
 
 ## 📜 许可证
 
-产品/服务：专有 SaaS。本仓库：**MIT 协议**。
+产品/服务：专有 SaaS。  
+本仓库（README + 文档）：**MIT 协议** —— 可自由引用或 Fork 结构。
 
 ---
 
 ## 🔗 相关链接
 
-- [微软 WHCP](https://learn.microsoft.com/zh-cn/windows-hardware/drivers/dashboard/)
+- [微软 WHCP / 硬件仪表板](https://learn.microsoft.com/zh-cn/windows-hardware/drivers/dashboard/)
 - [驱动签名要求](https://learn.microsoft.com/zh-cn/windows-hardware/drivers/dashboard/code-signing-reqs)
 - [Windows 驱动策略](https://support.microsoft.com/zh-cn/windows/windows-驱动程序策略)
 
