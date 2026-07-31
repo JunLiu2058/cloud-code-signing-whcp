@@ -3,9 +3,9 @@
   新华云签名 / Xinhua Cloud Signing
   极简语言选择入口页
   Organization: Xinhua-Cloud-Sign
+  Repo: Xinhua-Cloud-Sign/cloud-code-signing-whcp
 =============================================
 -->
-[![Telegram](https://img.shields.io/badge/Telegram-Community-26A5E4?style=for-the-badge&logo=telegram&logoColor=white&link=[](@replace=10001))](https://t.me/XinhuaCloudSign)
 
 <p align="center">
   <img src="https://img.shields.io/badge/🌩-Xinhua%20Cloud%20Signing-1a1a2e?style=for-the-badge&labelColor=0a1628">
@@ -49,7 +49,11 @@
 
 | File / 文件 | Description / 说明 |
 |-------------|-------------------|
-| `CodeSigning_installer.exe` | Cloud signing client installer / 云签名客户端安装包 |
+| `Xinhua_EVCS.exe` (v3.0.6.1) | Offline full installer / 离线完整安装包 |
+
+📥 **Download / 下载：**
+- GitHub Releases: https://github.com/Xinhua-Cloud-Sign/cloud-code-signing-whcp/releases/tag/v3.0.6.1
+- R2 Mirror: `https://<r2-bucket>.r2.cloudflarestorage.com/releases/Xinhua_EVCS_v3.0.6.1_setup.exe`
 
 ---
 
@@ -62,7 +66,7 @@ cloud-code-signing-whcp/
 ├── README_CN.md           ← 完整中文版
 ├── docs/
 │   └── Xinhua-Cloud-Sign-WhitePaper.pdf
-├── CodeSigning_installer.exe
+├── Xinhua_EVCS.exe
 └── LICENSE
 ```
 
@@ -70,11 +74,15 @@ cloud-code-signing-whcp/
 
 ### 🎁 Developer Community / 开发者社区
 
-> 🇬🇧 *Not for product managers. For people who actually read Intel SDM & debug BSOD at 2 AM.* → Join → Get **1× free cloud signature**. No forms. No shares. No KPI.
->
-> 🇨🇳 *这里不属于产品经理，只属于那些愿意读 Intel SDM、凌晨两点还在调 BSOD 的人。* → 加入 → **免费获赠 1 份正版云签名**。不卖课，不割韭菜，只收同类。
+| 🇬🇧 EN | 🇨🇳 中文 |
+|--------|----------|
+| Not for product managers. For people who actually read Intel SDM & debug BSOD at 2 AM. → Join → Get **1× free cloud signature**. No forms. No shares. No KPI. | 这里不属于产品经理，只属于那些愿意读 Intel SDM、凌晨两点还在调 BSOD 的人。→ 加入 → **免费获赠 1 份正版云签名**。不卖课，不割韭菜，只收同类。 |
 
-| 💬 Telegram Group | [t.me/XinhuaCloudSign](https://t.me/XinhuaCloudSign) |
+| 💬 Telegram Group | 📢 Telegram Channel |
+|-------------------|----------------------|
+| @XinhuaCloudSign (discussion) | @XinhuaCloudSign_News (announcements) |
+
+---
 
 <p align="center">
   <a href="README_EN.md"><b>🇬🇧 Read in English →</b></a>
