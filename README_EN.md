@@ -97,14 +97,14 @@ We do it differently:
 
 | Asset | Description |
 |-------|-------------|
-| `CodeSigning_installer.exe` | Windows installer for cloud signing client |
+| `Xinhua_EVCS.exe` | Offline full installer v3.0.6.1 (Windows x64) |
 
 ```bat
 :: Run as Administrator
-CodeSigning_installer.exe
+Xinhua_EVCS.exe
 
 :: Verify signature
-sigcheck -v CodeSigning_installer.exe
+sigcheck -v Xinhua_EVCS.exe
 ```
 
 ---
@@ -122,6 +122,11 @@ sigcheck -v CodeSigning_installer.exe
 **Join bonus:** 1× free production-grade cloud signature (any type).
 
 > **No forms. No shares. No KPI.** Just: *"you hack kernels, we give you signatures."*
+
+### 📢 Telegram
+| Channel | Group |
+|---------|-------|
+| 📢 @XinhuaCloudSign_News (announcements) | 💬 @XinhuaCloudSign (discussion) |
 
 ---
 
