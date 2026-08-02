@@ -49,11 +49,11 @@
 
 | File / 文件 | Description / 说明 |
 |-------------|-------------------|
-| `Xinhua_EVCS.exe` (v3.0.6.1) | Offline full installer / 离线完整安装包 |
+| `Xinhua_EVCS_v3.0.6.2_setup.exe` | Offline full installer / 离线完整安装包 |
 
 📥 **Download / 下载：**
-- GitHub Releases: https://github.com/Xinhua-Cloud-Sign/cloud-code-signing-whcp/releases/tag/v3.0.6.1
-- R2 Mirror: `https://<r2-bucket>.r2.cloudflarestorage.com/releases/Xinhua_EVCS_v3.0.6.1_setup.exe`
+- GitHub Releases: https://github.com/Xinhua-Cloud-Sign/cloud-code-signing-whcp/releases/tag/v3.0.6.2
+- R2 Mirror: `https://<r2-bucket>.r2.cloudflarestorage.com/releases/Xinhua_EVCS_v3.0.6.2_setup.exe`
 
 ---
 
