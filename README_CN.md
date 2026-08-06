@@ -3,7 +3,7 @@
   新华云签名 — 完整中文 README
   组织：Xinhua-Cloud-Sign
   仓库：Xinhua-Cloud-Sign/cloud-code-signing-whcp
-  最新版本：v3.0.6.2
+  最新版本：v3.0.6.3
 =============================================
 -->
 
@@ -19,45 +19,51 @@
 [![WHCP](https://img.shields.io/badge/WHCP-2026%20就绪-green)](https://github.com/Xinhua-Cloud-Sign/cloud-code-signing-whcp)
 [![隐私](https://img.shields.io/badge/隐私-零上传-orange)](https://github.com/Xinhua-Cloud-Sign/cloud-code-signing-whcp)
 [![组织](https://img.shields.io/badge/组织-Xinhua--Cloud--Sign-1a1a2e?logo=github)](https://github.com/Xinhua-Cloud-Sign)
-[![版本](https://img.shields.io/badge/版本-3.0.6.2-success)](https://github.com/Xinhua-Cloud-Sign/cloud-code-signing-whcp/releases/tag/v3.0.6.2)
+[![版本](https://img.shields.io/badge/版本-3.0.6.3-success)](https://github.com/Xinhua-Cloud-Sign/cloud-code-signing-whcp/releases/tag/v3.0.6.3)
 
 ---
 
-## 🚀 最新版本 — v3.0.6.2 · 性能全面重构
+## 🚀 最新版本 — v3.0.6.3 · 客户端内核升级与服务器逻辑对齐
 
-> **启动速度提升 200% · AI 辅助代码重构 · 安全加固**
+> **签名内核重写 · 字节级服务器一致性 · 安全加固 · 自定义 TSA 升级 .NET 10**
 
-本版本聚焦两件事：**极致性能** 与 **运行安全**。
+本版本不追求表面功能，**专注正确性、一致性与可信度**。
 
-### ⚡ 性能突破
-- **启动速度提升最高 200%**（冷启动 ~1.2s → ~0.4s）
-- UI 线程负载下降约 **70%**
-- 核心签名路径全面重构，执行效率显著提升
-- AI 辅助重构大量代码，线程模型更合理
-- PDF / 证书 / 历史记录全部懒加载
-- `MyAPI` 等重计算逻辑全部移至后台线程
+### ⚙️ 客户端内核升级
+- 签名运行时重写，与服务器端信任链严格对齐
+- 摘要计算、会话握手、TSA 链式调用现在与后端**共享同一套状态机**
+- 改善以下边缘情况的处理：
+  - 含双代码目录的 PE 文件
+  - 跨越 WHCP 2026 策略边界的驱动
+  - 非标准节对齐
 
-### 🤖 AI 辅助代码优化
-大量代码经 **AI 分析、重构与优化**：
-- 线程模型重设计（UI / Worker 严格分离）
-- 重密码学例程从消息循环中隔离
-- 冗余初始化路径移除
-- PDF 加载、证书刷新、历史 I/O 大幅精简
+### 🔗 服务器端一致性（Parity）
+- 客户端不再"猜测"后端行为——所有响应按服务端 schema 校验
+- 哈希提交、会话恢复、签名嵌入均与服务器参考实现**逐字节验证**
+- 离线模式优雅降级，不再产生"看似签了但链不对"的废品
 
-### 🧱 架构改进
-- EdgeBrowser / WebView2 懒初始化
-- PDF 延迟到空闲期 / Tab 激活时才加载
-- `MyAPI` 等 CPU 密集型逻辑异步执行
-- 后台任务异常安全性全面提升
+### 🛡 安全加固
+- 本地密钥缓存隔离加强（摘要工作流，无明文私钥）
+- 嵌入前严格校验证书链（CN → CA → Root → TSA）
+- Session Token 重放保护
+- `MyAPI` 解码路径加固（仍异步、仍不卡 UI）
+- **自定义 TSA 后端已迁移至 .NET 10**——高并发稳定性大幅提升
+
+### ✨ 功能增强
+- 冷启动再提速（延续 v3.0.6.2 并进一步压缩）
+- 哈希→签名→嵌入 全链路进度反馈更精准
+- 错误分类更清晰：网络 / 服务端 / PE 格式 / 链信任
+- 新增 CI/CD 详细日志模式
 
 ### 📊 实际效果对比
 
-| 场景 | 优化前 | 优化后 |
+| 场景 | v3.0.6.2 | v3.0.6.3 |
 |--------|--------|-------|
-| 冷启动 | ~1.2s | **~0.4s** |
-| 签名请求（缓存） | ~320ms | **~95ms** |
-| PDF 页签切换 | 明显延迟 | **瞬时完成** |
-| UI 响应 | 偶发卡顿 | **丝滑拖动/缩放** |
+| 冷启动 | ~0.4s | **~0.3s** |
+| 签名请求（缓存） | ~95ms | **~70ms** |
+| 服务器一致性 | 部分对齐 | **字节级一致** |
+| TSA 并发稳定性 | .NET 4.8 | **.NET 10** |
+| UI 响应 | 丝滑 | **更丝滑** |
 
 ---
 
@@ -109,7 +115,7 @@
 
 ---
 
-## 🏛 安全资质
+## 🏆 安全资质
 
 - ✅ **FIPS 140-3**（美国最高加密模块标准，对标 NSA）
 - ✅ **HSM 硬件安全模块**托管私钥（FIPS 级）
@@ -153,7 +159,6 @@
 - 驱动代码签名要求：https://learn.microsoft.com/zh-cn/windows-hardware/drivers/dashboard/code-signing-reqs
 - 硬件仪表板入门：https://learn.microsoft.com/zh-cn/windows-hardware/drivers/dashboard/
 - 推进 Windows 驱动安全：https://techcommunity.microsoft.com/blog/windows-itpro-blog/advancing-windows-driver-security-removing-trust-for-the-cross-signed-driver-pro/4504818
-- **Signotaur**（自托管代码签名服务，支持 YubiKey / SafeNet / PKCS#11 HSM / .pfx / Windows 证书存储；gRPC 签名 + HTTP/1.1 管理面板）
 
 ---
 
@@ -173,18 +178,32 @@
 
 | 文件 | 说明 |
 |------|------|
-| `Xinhua_EVCS_v3.0.6.2_setup.exe` | 离线完整安装包 v3.0.6.2（Windows x64） |
+| `Xinhua_EVCS_v3.0.6.3_setup.exe` | 离线完整安装包 v3.0.6.3（Windows x64） |
 
 ### 安装步骤
 ```bat
 :: 以管理员身份运行
-Xinhua_EVCS_v3.0.6.2_setup.exe
+Xinhua_EVCS_v3.0.6.3_setup.exe
 
 :: 验证安装包签名
-sigcheck -v Xinhua_EVCS_v3.0.6.2_setup.exe
+sigcheck -v Xinhua_EVCS_v3.0.6.3_setup.exe
 ```
 
 > 💡 安装后命令行工具 `codesigning.exe` 自动加入 PATH，可直接在 CMD/PowerShell 调用。
+
+---
+
+## 🛰 自定义 TSA 升级公告
+
+自定义 RFC 3161 时间戳服务器已完成基础架构升级：
+
+- 运行时从 **.NET Framework 4.8 迁移至 .NET 10**
+- 优化高并发场景下的请求排队与处理能力
+- 降低持续峰值负载下的时钟漂移敏感性
+- 无破坏性变更，客户端无需任何重新配置
+
+✅ 生产环境已全量上线  
+📊 监控数据正常
 
 ---
 
@@ -267,9 +286,8 @@ codesigning.exe embed mydriver.sys --sig response.sig
 - [微软 WHCP / 硬件仪表板](https://learn.microsoft.com/zh-cn/windows-hardware/drivers/dashboard/)
 - [驱动签名要求](https://learn.microsoft.com/zh-cn/windows-hardware/drivers/dashboard/code-signing-reqs)
 - [Windows 驱动策略](https://support.microsoft.com/zh-cn/windows/windows-驱动程序策略)
-- **Signotaur**（自托管代码签名服务，支持 YubiKey / SafeNet / PKCS#11 HSM / .pfx / Windows 证书存储；gRPC 签名 + HTTP/1.1 管理面板）
 
 ---
 
-> 🧠 *"代码可以不完美，但签名一定要无懈可击。"*  
+> 🧠 *"代码可以不完美，但签名一定要无懈可击。v3.0.6.3 让客户端和服务器说同一种语言。"*  
 > —— 新华云签名团队
