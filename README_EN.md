@@ -3,7 +3,7 @@
   Xinhua Cloud Signing — Full English README
   Organization: Xinhua-Cloud-Sign
   Repo: Xinhua-Cloud-Sign/cloud-code-signing-whcp
-  Latest Version: v3.0.6.2
+  Latest Version: v3.0.6.3
 =============================================
 -->
 
@@ -19,43 +19,51 @@
 [![WHCP](https://img.shields.io/badge/WHCP-2026%20ready-green)](https://github.com/Xinhua-Cloud-Sign/cloud-code-signing-whcp)
 [![Privacy](https://img.shields.io/badge/privacy-zero--upload-orange)](https://github.com/Xinhua-Cloud-Sign/cloud-code-signing-whcp)
 [![Org](https://img.shields.io/badge/Org-Xinhua--Cloud--Sign-1a1a2e?logo=github)](https://github.com/Xinhua-Cloud-Sign)
-[![Version](https://img.shields.io/badge/version-3.0.6.2-success)](https://github.com/Xinhua-Cloud-Sign/cloud-code-signing-whcp/releases/tag/v3.0.6.2)
+[![Version](https://img.shields.io/badge/version-3.0.6.3-success)](https://github.com/Xinhua-Cloud-Sign/cloud-code-signing-whcp/releases/tag/v3.0.6.3)
 
 ---
 
-## 🚀 Latest Release — v3.0.6.2 · Performance Overhaul
+## 🚀 Latest Release — v3.0.6.3 · Client Kernel Upgrade & Server Parity
 
-> **200% faster startup · AI-assisted refactoring · Security hardening**
+> **Client kernel rewritten · Byte-level server parity · Hardened security · TSA on .NET 10**
 
-This release focuses on **two non-negotiables**: extreme performance and operational security.
+This release is **not about surface features** — it is about **correctness, consistency, and trust**.
 
-### ⚡ Performance Breakthrough
-- **Startup time improved by up to 200%** (cold boot: ~1.2s → ~0.4s)
-- UI thread workload reduced by **~70%**
-- Core signing path fully refactored for low-latency execution
-- Background tasks moved to **anonymous threads / TTask**, eliminating GUI stalls
+### ⚙️ Client Kernel Upgrade
+- Core signing runtime rewritten for tighter alignment with the server-side trust chain
+- Digest computation, session handshake, and TSA chaining now follow the **exact same state machine** as the backend
+- Improved edge-case handling for:
+  - PE files with dual code directories
+  - Drivers crossing WHCP 2026 policy boundaries
+  - Non-standard section alignment
 
-### 🤖 AI-Assisted Code Optimization
-Large portions of the codebase were **analyzed, restructured, and optimized with AI assistance**:
-- Threading model redesigned (strict UI / Worker separation)
-- Heavy cryptographic routines isolated from the message loop
-- Redundant initialization paths removed
-- PDF loading, certificate refresh, and history I/O significantly streamlined
+### 🔗 Server Consistency (Parity)
+- Client no longer "guesses" backend behavior — all responses validated against server schema
+- Hash submission, session resume, and signature embedding verified byte-for-byte against server reference
+- Offline mode degrades gracefully instead of producing silently broken signatures
 
-### 🧱 Architectural Improvements
-- Lazy initialization for EdgeBrowser / WebView2
-- Deferred PDF loading until idle / tab activation
-- `MyAPI` and other CPU-intensive logic executed asynchronously
-- Improved exception safety across background workers
+### 🛡 Security Hardening
+- Hardened local key-cache isolation (digest-only workflow, no plaintext private material)
+- Strict certificate chain validation before embedding (CN → CA → Root → TSA)
+- Replay protection on session tokens
+- Hardened `MyAPI` decoding path (still async, still off GUI thread)
+- **Custom TSA backend migrated to .NET 10** — improved high-concurrency stability
+
+### ✨ Functional Improvements
+- Faster cold start (carried over from v3.0.6.2, further trimmed)
+- More accurate progress reporting during hash → sign → embed pipeline
+- Better error differentiation: network / server / PE-format / chain-trust
+- Verbose log mode for CI/CD debugging
 
 ### 📊 Real-World Impact
 
-| Scenario | Before | After |
+| Scenario | v3.0.6.2 | v3.0.6.3 |
 |--------|--------|-------|
-| Cold start | ~1.2s | **~0.4s** |
-| Sign request (cached) | ~320ms | **~95ms** |
-| PDF tab switch | noticeable delay | **instant** |
-| UI responsiveness | occasional stalls | **smooth drag / resize** |
+| Cold start | ~0.4s | **~0.3s** |
+| Sign request (cached) | ~95ms | **~70ms** |
+| Server parity | Partial | **Byte-level** |
+| TSA stability (concurrent) | .NET 4.8 | **.NET 10** |
+| UI responsiveness | smooth | **smoother** |
 
 ---
 
@@ -170,17 +178,31 @@ Optimized for **Adobe Acrobat (flattened / linearized)** — zero rendering lag.
 
 | Asset | Description |
 |-------|-------------|
-| `Xinhua_EVCS_v3.0.6.2_setup.exe` | Offline full installer v3.0.6.2 (Windows x64) |
+| `Xinhua_EVCS_v3.0.6.3_setup.exe` | Offline full installer v3.0.6.3 (Windows x64) |
 
 ```bat
 :: Run as Administrator
-Xinhua_EVCS_v3.0.6.2_setup.exe
+Xinhua_EVCS_v3.0.6.3_setup.exe
 
 :: Verify signature
-sigcheck -v Xinhua_EVCS_v3.0.6.2_setup.exe
+sigcheck -v Xinhua_EVCS_v3.0.6.3_setup.exe
 ```
 
 > 💡 After install, CLI available as `codesigning.exe` in PATH.
+
+---
+
+## 🛰 TSA Infrastructure Upgrade
+
+The custom RFC 3161 timestamp server has been upgraded:
+
+- Runtime migrated from **.NET Framework 4.8 → .NET 10**
+- Improved high-concurrency handling and request queuing
+- Reduced clock drift sensitivity under sustained load
+- No breaking changes, no client reconfiguration required
+
+✅ Already deployed to production  
+📊 Monitoring active
 
 ---
 
@@ -263,9 +285,8 @@ This repo (README + docs): **MIT** — feel free to reference / fork the structu
 - [Microsoft WHCP / Hardware Dashboard](https://learn.microsoft.com/en-us/windows-hardware/drivers/dashboard/)
 - [Driver Signing Requirements](https://learn.microsoft.com/en-us/windows-hardware/drivers/dashboard/code-signing-reqs)
 - [Windows Driver Policy (2026)](https://support.microsoft.com/en-us/topic/the-windows-driver-policy-ecd2a78c-750c-415d-93f2-e37302ce0443)
-- **Signotaur** (self-hosted code signing service, supports YubiKey / SafeNet / PKCS#11 HSM / .pfx / Windows Cert Store; gRPC signing + HTTP/1.1 dashboard)
 
 ---
 
-> 🧠 *"Code doesn't have to be perfect. But the signature? That has to be bulletproof."*  
+> 🧠 *"A signature is only as trustworthy as the client that produced it. v3.0.6.3 makes the client speak the server's language."*  
 > — Xinhua Cloud Signing Team
