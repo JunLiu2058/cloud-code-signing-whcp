@@ -3,7 +3,7 @@
   Xinhua Cloud Signing — Full English README
   Organization: Xinhua-Cloud-Sign
   Repo: Xinhua-Cloud-Sign/cloud-code-signing-whcp
-  Latest Version: v3.0.6.3
+  Latest Version: v3.0.7.0
 =============================================
 -->
 
@@ -19,51 +19,89 @@
 [![WHCP](https://img.shields.io/badge/WHCP-2026%20ready-green)](https://github.com/Xinhua-Cloud-Sign/cloud-code-signing-whcp)
 [![Privacy](https://img.shields.io/badge/privacy-zero--upload-orange)](https://github.com/Xinhua-Cloud-Sign/cloud-code-signing-whcp)
 [![Org](https://img.shields.io/badge/Org-Xinhua--Cloud--Sign-1a1a2e?logo=github)](https://github.com/Xinhua-Cloud-Sign)
-[![Version](https://img.shields.io/badge/version-3.0.6.3-success)](https://github.com/Xinhua-Cloud-Sign/cloud-code-signing-whcp/releases/tag/v3.0.6.3)
+[![Version](https://img.shields.io/badge/version-3.0.7.0-success)](https://github.com/Xinhua-Cloud-Sign/cloud-code-signing-whcp/releases/tag/v3.0.7.0)
 
 ---
 
-## 🚀 Latest Release — v3.0.6.3 · Client Kernel Upgrade & Server Parity
+## 🚀 Latest Release — v3.0.7.0 · Server Enforces Client Minimum — Legacy Versions Deprecated
 
-> **Client kernel rewritten · Byte-level server parity · Hardened security · TSA on .NET 10**
+> **Breaking Change · Security Enforcement · Legacy Client Cut‑off · TSA on .NET 10**
 
-This release is **not about surface features** — it is about **correctness, consistency, and trust**.
+This release is a **security-driven mandatory upgrade**. The server will **no longer accept any client below v3.0.7.0**.
+
+### ⚠️ Breaking Change (Server‑Side)
+
+Starting the v3.0.7.0 rollout, the cloud signing backend **rejects all requests from client versions < v3.0.7.0**:
+
+- v3.0.6.x and earlier are **no longer accepted** by the signing gateway
+- Requests with stale session schemas, old TSA chains, or pre‑parity digest formats return `403 ClientTooOld`
+- This is a **security enforcement**, not a feature removal
+
+| Client | Server Status |
+|--------|:---:|
+| ≤ v3.0.6.3 | ❌ Rejected |
+| **v3.0.7.0** | ✅ Only accepted version |
+
+👉 **All users must upgrade before the cutoff date** or signing requests will fail.
+
+### 🛡 Why This Is Happening
+
+Over the past weeks we observed **sustained targeted intrusion attempts** against the signing infrastructure:
+
+- ID enumeration → bulk password‑reset floods
+- Credential stuffing against the web console
+- Attempts to abuse legacy client handshake quirks as pivot points
+
+Legacy clients (< v3.0.7.0) carry:
+
+- weaker session token derivation
+- pre‑hardening key‑cache behavior
+- non‑byte‑aligned parity with the current server trust state machine
+
+Keeping them compatible would mean **keeping known attack surface alive**. We chose to close it.
 
 ### ⚙️ Client Kernel Upgrade
+
 - Core signing runtime rewritten for tighter alignment with the server-side trust chain
-- Digest computation, session handshake, and TSA chaining now follow the **exact same state machine** as the backend
+- Digest computation, session handshake, and TSA chaining follow the **exact same state machine** as the backend
 - Improved edge-case handling for:
   - PE files with dual code directories
   - Drivers crossing WHCP 2026 policy boundaries
   - Non-standard section alignment
 
 ### 🔗 Server Consistency (Parity)
+
 - Client no longer "guesses" backend behavior — all responses validated against server schema
 - Hash submission, session resume, and signature embedding verified byte-for-byte against server reference
 - Offline mode degrades gracefully instead of producing silently broken signatures
 
 ### 🛡 Security Hardening
+
 - Hardened local key-cache isolation (digest-only workflow, no plaintext private material)
 - Strict certificate chain validation before embedding (CN → CA → Root → TSA)
 - Replay protection on session tokens
 - Hardened `MyAPI` decoding path (still async, still off GUI thread)
-- **Custom TSA backend migrated to .NET 10** — improved high-concurrency stability
+- **Custom TSA backend on .NET 10** — improved high-concurrency stability
+- **Server-side reject list** for pre‑v3.0.7.0 user‑agent + session magic
 
 ### ✨ Functional Improvements
-- Faster cold start (carried over from v3.0.6.2, further trimmed)
+
+- Faster cold start (carried over from v3.0.6.3, further trimmed)
 - More accurate progress reporting during hash → sign → embed pipeline
 - Better error differentiation: network / server / PE-format / chain-trust
 - Verbose log mode for CI/CD debugging
 
 ### 📊 Real-World Impact
 
-| Scenario | v3.0.6.2 | v3.0.6.3 |
-|--------|--------|-------|
-| Cold start | ~0.4s | **~0.3s** |
-| Sign request (cached) | ~95ms | **~70ms** |
-| Server parity | Partial | **Byte-level** |
-| TSA stability (concurrent) | .NET 4.8 | **.NET 10** |
-| UI responsiveness | smooth | **smoother** |
+| Scenario | v3.0.6.2 | v3.0.6.3 | v3.0.7.0 |
+|--------|--------|-------|-------|
+| Cold start | ~0.4s | ~0.3s | **~0.2s** |
+| Sign request (cached) | ~95ms | ~70ms | **~50ms** |
+| Server parity | Partial | Byte-level | **Enforced** |
+| TSA stability (concurrent) | .NET 4.8 | .NET 10 | **.NET 10 (hardened)** |
+| UI responsiveness | smooth | smoother | **smoothest** |
+| Legacy client support | ✅ | ✅ | **❌ Removed** |
+| Session replay protection | ❌ | Partial | **✅ Full** |
 
 ---
 
@@ -83,10 +121,11 @@ On August 1, 2026, our infrastructure detected a coordinated attack targeting us
 
 We strongly advise **all users** to take immediate action:
 
-1. **Enable TOTP / Google Authenticator 2FA** on your Cloud Signing account
-2. **Change your signing console password** to a 16+ character strong passphrase
-3. **Change your linked email password** (and ensure it is unique)
-4. **Never click suspicious links in emails** — always navigate manually to the console
+1. **Upgrade to v3.0.7.0 immediately** — older versions will be rejected by the server
+2. **Enable TOTP / Google Authenticator 2FA** on your Cloud Signing account
+3. **Change your signing console password** to a 16+ character strong passphrase
+4. **Change your linked email password** (and ensure it is unique)
+5. **Never click suspicious links in emails** — always navigate manually to the console
 
 ### ⚠️ Responsibility Boundary
 
@@ -115,7 +154,7 @@ We do it differently:
 
 ---
 
-## 🏛 Security Credentials
+## 🏆 Security Credentials
 
 - ✅ **FIPS 140-3** (U.S. highest crypto module standard, NSA-aligned)
 - ✅ **HSM-backed key storage** (FIPS-grade hardware security module)
@@ -178,14 +217,14 @@ Optimized for **Adobe Acrobat (flattened / linearized)** — zero rendering lag.
 
 | Asset | Description |
 |-------|-------------|
-| `Xinhua_EVCS_v3.0.6.3_setup.exe` | Offline full installer v3.0.6.3 (Windows x64) |
+| `Xinhua_EVCS_v3.0.7.0_setup.exe` | Offline full installer v3.0.7.0 (Windows x64) |
 
 ```bat
 :: Run as Administrator
-Xinhua_EVCS_v3.0.6.3_setup.exe
+Xinhua_EVCS_v3.0.7.0_setup.exe
 
 :: Verify signature
-sigcheck -v Xinhua_EVCS_v3.0.6.3_setup.exe
+sigcheck -v Xinhua_EVCS_v3.0.7.0_setup.exe
 ```
 
 > 💡 After install, CLI available as `codesigning.exe` in PATH.
@@ -199,7 +238,8 @@ The custom RFC 3161 timestamp server has been upgraded:
 - Runtime migrated from **.NET Framework 4.8 → .NET 10**
 - Improved high-concurrency handling and request queuing
 - Reduced clock drift sensitivity under sustained load
-- No breaking changes, no client reconfiguration required
+- Hardened against timestamp forgery and replay attacks
+- No breaking changes for v3.0.7.0+ clients
 
 ✅ Already deployed to production  
 📊 Monitoring active
@@ -270,6 +310,7 @@ codesigning.exe embed mydriver.sys --sig response.sig
 | ⚡ Median sign time | **28 ms** |
 | 📦 Max single-file | **Hundreds of GB** (hash only) |
 | 🔒 Files uploaded | **0** |
+| 🛡 Min client version | **v3.0.7.0** |
 
 ---
 
@@ -288,5 +329,5 @@ This repo (README + docs): **MIT** — feel free to reference / fork the structu
 
 ---
 
-> 🧠 *"A signature is only as trustworthy as the client that produced it. v3.0.6.3 makes the client speak the server's language."*  
+> 🧠 *"Compatibility is a luxury you can't afford with a signing root. v3.0.7.0 closes the door on everything that predates the threat model we now run."*  
 > — Xinhua Cloud Signing Team
