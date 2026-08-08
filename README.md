@@ -1,3 +1,9 @@
+## [v3.0.7.1] - 2026-08-08 · Client Slimming & Runtime Efficiency
+- **Changed**: Removed redundant init paths; `MyAPI` unified into single off-GUI-thread entry
+- **Changed**: Flattened `TTask`/`TThread.Queue` callbacks, eliminated intermediate hash buffers
+- **Performance**: Cold-start memory −5~8% vs v3.0.7.0, GUI thread does zero crypto/IO during sign
+- **Compatibility**: Fully aligned with v3.0.7.0 server enforcement (≤ v3.0.6.3 still rejected)
+- **中文**: 精简客户端冗余代码，统一异步入口；运行期零主线程加密/IO，冷启动内存再降 5–8%；服务端强制策略同 v3.0.7.0
 <!--
 =============================================
   Xinhua Cloud Signing / 新华云签名
