@@ -1,3 +1,17 @@
+## [v3.0.7.1] - 2026-08-08
+### Changed
+- Stripped dead branches and duplicated `FormCreate`/`FormShow` init logic
+- Unified `MyAPI` decode path into one `TThread.CreateAnonymousThread` entry
+- Removed pre‑v3.0.7.0 session-magic fallbacks
+
+### Performance
+- Eliminated intermediate buffers in SHA‑256 streaming path
+- Flattened `TTask` + `TThread.Queue` callback chain (fewer message-loop hops)
+- Cold-start private working set reduced ~5–8% vs v3.0.7.0
+- GUI thread performs no crypto, no JSON parse, no file IO in sign pipeline
+
+### Compatibility
+- Server enforcement unchanged from v3.0.7.0 (clients < v3.0.7.0 rejected with 403 ClientTooOld)
 <!--
 =============================================
   Xinhua Cloud Signing — Full English README
